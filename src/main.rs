@@ -3,17 +3,30 @@
 //
  
 use std::env;
+use image;
+
 
 fn main() {
+
     let args: Vec<String> = env::args().collect();
 
-    match args.get(1).map(String::as_str) {
+    let mode       = args.get(1).map(String::as_str).expect("no mode specified");
+    let image_path = args.get(2).map(String::as_str).expect("no image path specified");
 
-        Some("add") => {
+
+
+    println!("Attempting to load image buffer: {}", image_path);
+    let image_buffer = image::open(image_path)
+                            .expect("failed to open image buffer")
+                            .to_rgb8();
+
+    match mode {
+
+        "add" => {
             println!("add");
         }
 
-        Some("view") => {
+        "view" => {
             println!("view");
         }
 
@@ -21,6 +34,4 @@ fn main() {
             println!("mode argument invalid");
         }
     }
-
-    println!("theres nothing here yet.");
 }
