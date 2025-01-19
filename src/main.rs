@@ -9,8 +9,8 @@ fn main() {
 
     match args.get(1).map(String::as_str) {
 
-        Some("run") => {
-            println!("run");
+        Some("add") => {
+            println!("add");
         }
 
         Some("view") => {
