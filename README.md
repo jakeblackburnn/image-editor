@@ -4,6 +4,8 @@ By J. Blackburn
 
 Last Updated Jan 18 2025 (**WIP**)
 
+Simple CLI based low level image editor.
+
 ***
 
 ## Installation
