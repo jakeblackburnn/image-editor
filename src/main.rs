@@ -6,7 +6,9 @@ mod add;
 mod view;
 
 use std::env;
-use image;
+use image::{ImageBuffer, Rgb};
+
+type RgbImageBuffer = ImageBuffer<Rgb<u8>, Vec<u8>>;
 
 
 fn main() {
@@ -19,22 +21,22 @@ fn main() {
 
 
     println!("Attempting to load image buffer: {}", image_path);
-    let image_buffer = image::open(image_path)
-                            .expect("failed to open image buffer")
-                            .to_rgb8();
+    let image_buffer: RgbImageBuffer = image::open(image_path)
+                                .expect("failed to open image buffer")
+                                .to_rgb8();
 
     match mode {
 
         "add" => {
-            add::start();
+            add::start(image_buffer);
         }
 
         "view" => {
-            view::start();
+            view::start(image_buffer);
         }
 
         _ => {
-            println!("mode argument invalid");
+            panic!("mode argument invalid");
         }
     }
 }
