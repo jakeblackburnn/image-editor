@@ -4,6 +4,7 @@
  
 mod add;
 mod view;
+mod filters;
 
 use std::env;
 use image::{ImageBuffer, Rgb};
