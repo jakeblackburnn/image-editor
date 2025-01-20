@@ -2,6 +2,9 @@
 // Created by J. Blackburn - Jan 11 2025
 //
  
+mod add;
+mod view;
+
 use std::env;
 use image;
 
@@ -23,11 +26,11 @@ fn main() {
     match mode {
 
         "add" => {
-            println!("add");
+            add::start();
         }
 
         "view" => {
-            println!("view");
+            view::start();
         }
 
         _ => {
