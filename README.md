@@ -2,7 +2,7 @@
 
 By J. Blackburn
 
-Last Updated Jan 20 2025 (**WIP**)
+Last Updated Jan 22 2025 (**WIP**)
 
 Simple CLI based low level image editor.
 
