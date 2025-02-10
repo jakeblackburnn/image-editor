@@ -2,13 +2,15 @@
 
 By J. Blackburn
 
-Last Updated Jan 22 2025 (**WIP**)
+Last Updated Feb 10 2025 (**WIP**)
 
 Simple CLI based low level image editor.
 
 ***
 
 ## Installation
+
+0. Ensure Rust is installed: [official rust installation guide](https://www.rust-lang.org/tools/install)
 
 1. Clone the repository:
    ```bash
