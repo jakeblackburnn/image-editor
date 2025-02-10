@@ -22,6 +22,8 @@ fn main() {
     let image_path = args.get(2).map(String::as_str).expect("no image path specified");
 
         // Optional Arguments
+    let filter_name = args.get(3);
+    let save_path = args.get(4);
         // nothing here yet...
 
     println!("Attempting to load image buffer: {}", image_path);
@@ -32,11 +34,11 @@ fn main() {
     match mode {
 
         "add" => {
-            add::start(image_buffer);
+            add::start(image_buffer, filter_name, save_path);
         }
 
         "view" => {
-            view::start(image_buffer);
+            view::start(image_buffer, filter_name, save_path);
         }
 
         _ => {
