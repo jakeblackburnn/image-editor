@@ -20,15 +20,15 @@ pub trait Filter {
 struct FilterFactory {
 
     filter_constructors: HashMap<String, fn() -> Box<dyn Filter>>, // maps filter name to function that 
-                                                        // returns corresponding filter struct
+                                                                   // returns corresponding filter struct
 }
 
 
 impl FilterFactory {
     fn new() -> Self {
-        let filter_constructors = HashMap::new();
+        let mut filter_constructors: HashMap<String, fn() -> Box<dyn Filter>> = HashMap::new();
 
-        // Add filter creators to registry
+        filter_constructors.insert("invert".to_string(), invert::construct);
      
         Self {
             filter_constructors,
