@@ -11,6 +11,11 @@ type RgbImageBuffer = ImageBuffer<Rgb<u8>, Vec<u8>>;
 
 pub struct Invert;
 
+
+pub fn construct() -> Box<dyn Filter> {
+    Box::new(Invert) 
+}
+
 impl Filter for Invert {
 
     fn apply(&self, image_buffer: &mut RgbImageBuffer) {
