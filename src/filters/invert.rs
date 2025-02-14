@@ -2,26 +2,40 @@
 // Created By J. Blackburn - Jan 20 2025
 //
 
+use super::Filter; // pull down filter trait from mod.rs
+
 use image::{ImageBuffer, Rgb};
 
 type RgbImageBuffer = ImageBuffer<Rgb<u8>, Vec<u8>>;
 
-pub fn apply(image_buffer: &mut RgbImageBuffer) {
-   
-    println!("applying invert");
 
-    let (width, height) = image_buffer.dimensions();
+pub struct Invert;
 
-    for y in 0..height {
-    for x in 0..width  {
 
-        let pixel     = image_buffer.get_pixel(x, y);
-        let new_pixel = invert_pixel(pixel);
+pub fn construct() -> Box<dyn Filter> {
+    Box::new(Invert) 
+}
 
-        image_buffer.put_pixel(x, y, new_pixel);
+impl Filter for Invert {
+
+    fn apply(&self, image_buffer: &mut RgbImageBuffer) {
+       
+        println!("applying invert");
+
+        let (width, height) = image_buffer.dimensions();
+
+        for y in 0..height {
+        for x in 0..width  {
+
+            let pixel     = image_buffer.get_pixel(x, y);
+            let new_pixel = invert_pixel(pixel);
+
+            image_buffer.put_pixel(x, y, new_pixel);
+
+        }
+        } 
 
     }
-    } 
 
 }
 
