@@ -2,9 +2,11 @@
 
 By J. Blackburn
 
-Last Updated Feb 10 2025 (**WIP**)
+Last Updated Feb 22 2025 (**WIP**)
 
 Simple CLI based low level image editor.
+
+<img src="https://github.com/jakeblackburnn/image-editor/blob/main/example.png?raw=true" width="600">
 
 ***
 
