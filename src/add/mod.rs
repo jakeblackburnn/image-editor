@@ -11,13 +11,15 @@ type RgbImageBuffer = ImageBuffer<Rgb<u8>, Vec<u8>>;
 
 pub fn start(mut image_buffer: RgbImageBuffer, filter: Option<&String>, save_path: Option<&String>) {
 
-    let factory = filters::FilterFactory::new();
+    let factory        = filters::FilterFactory::new();
+    let filter_builder = factory.get("invert");
 
-    let invert = factory.get("invert");
+    filter_builder().apply(&mut image_buffer);
 
-    invert().apply(&mut image_buffer);
 
-    println!("saving image. . .");
-    image_buffer.save("outputs/out.png");
-    println!("image saved.");
+        println!("saving image. . .");
+
+    let _  = image_buffer.save("outputs/out.png");
+
+        println!("image saved.");
 }   
