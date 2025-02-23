@@ -20,8 +20,6 @@ impl Filter for Invert {
 
     fn apply(&self, image_buffer: &mut RgbImageBuffer) {
        
-        println!("applying invert");
-
         let (width, height) = image_buffer.dimensions();
 
         for y in 0..height {
