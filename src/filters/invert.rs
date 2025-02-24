@@ -12,7 +12,7 @@ type RgbImageBuffer = ImageBuffer<Rgb<u8>, Vec<u8>>;
 pub struct Invert;
 
 
-pub fn construct() -> Box<dyn Filter> {
+pub fn construct(_key_string: &str) -> Box<dyn Filter> {
     Box::new(Invert) 
 }
 
