@@ -6,7 +6,10 @@ Last Updated Feb 23 2025 (**WIP**)
 
 Simple CLI based low level image editor.
 
-<img src="https://github.com/jakeblackburnn/image-editor/blob/main/out/out.png?raw=true" width="600">
+<div>
+<img src="https://github.com/jakeblackburnn/image-editor/blob/main/in/iris.jpg?raw=true" width="300">
+<img src="https://github.com/jakeblackburnn/image-editor/blob/main/out/out.png?raw=true" width="300">
+</div>
 
 ***
 
