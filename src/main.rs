@@ -7,42 +7,28 @@ mod view;
 mod filters;
 
 use std::env;
-use image::{ImageBuffer, Rgb};
 
-type RgbImageBuffer = ImageBuffer<Rgb<u8>, Vec<u8>>;
-
+// IMAGE EDITOR - MAIN
 
 fn main() {
 
-    let args: Vec<String> = env::args().collect();
+    let mut args_iterator = env::args(); // Implements Iterator
+    let _ = args_iterator.next();        // toss program executable arg
+                                        
 
-        // Required Arguments
-        // mode and image path are always 1st and 2nd arguments
-    let mode       = args.get(1).map(String::as_str).expect("no mode specified");
-    let image_path = args.get(2).map(String::as_str).expect("no image path specified");
+    if let Some(mode) = args_iterator.next() {
 
-        // Optional Arguments
-    let filter_name = args.get(3);
-    let save_path = args.get(4);
-        // nothing here yet...
+        let add_mode  = String::from("add");
+        let view_mode = String::from("view");
 
-    println!("Attempting to load image buffer: {}", image_path);
-    let image_buffer: RgbImageBuffer = image::open(image_path)
-                                .expect("failed to open image buffer")
-                                .to_rgb8();
+        match mode {
+            add_mode  =>  add::start(args_iterator),
+          //view_mode => view::start(args_iterator),    ... gonna ignore view mode for now
 
-    match mode {
-
-        "add" => {
-            add::start(image_buffer, filter_name, save_path);
+            _      => panic!("Mode argument invalid"),
         }
 
-        "view" => {
-            view::start(image_buffer, filter_name, save_path);
-        }
-
-        _ => {
-            panic!("mode argument invalid");
-        }
+    } else {
+        panic!("Mode argument not found");
     }
 }
