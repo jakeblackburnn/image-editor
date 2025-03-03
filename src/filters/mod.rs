@@ -41,3 +41,29 @@ impl FilterFactory {
         self.filter_constructors[filter]
     }
 }
+
+
+
+pub fn get_filter_components(filter_id: &str) -> (&str, &str) {
+
+    let re = Regex::new(r"(?P<name>[a-z]+)-(?P<key>.*)")
+                    .unwrap();
+
+    if let Some(filter_parts) = re.captures(filter_id) {
+
+        let name = filter_parts.name("name").unwrap().as_str();
+
+        let key_string  = match filter_parts.name("key") {
+
+            Some(key) if !key.as_str().is_empty() => key.as_str(),
+            _ => "",
+
+        };
+    
+        (name, key_string)
+
+    } else {
+        panic!("Failed to parse filter identifier");
+    }
+
+}
