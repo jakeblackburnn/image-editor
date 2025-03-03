@@ -31,12 +31,23 @@ Simple CLI based low level image editor.
 
 ## Usage
 
-1. hard-code desired filter key and output path into src/add/mod.rs
 
-2. run the program in add mode using cargo, specifying the path to your desired image:
+- single run:
 
 ```bash
-cargo run -- add <path-to-your-image>
+cargo run -- add <input> <filter> <output>
+```
+
+- batch input:
+
+```bash
+cargo run -- add -b <input_directory> <filter> <output_directory>
+```
+
+- batch output:
+
+```bash
+cargo run -- add <input> -s <filter_set> <output_directory>
 ```
 
 
@@ -45,19 +56,15 @@ cargo run -- add <path-to-your-image>
 ## Features
 
 1. Modes:
+
 - **Add mode** - 
-This mode adds and saves a filter to the image. 
-In future will be extended for adding multiple filters and saving batches of filtered images.
+This mode adds a filter or filters to an image or images. 
+three sub modes: single run, batch input run, batch output run.
+right now these lead to dummy functions and dont do anything. 
 
 - **View Mode** - 
 This mode is not implemented. 
 In future will be added to allow user to make and view changes in real time before committing to saving the new image.
-
-2. Filters: 
-- **Swap Filter** -
-This filter takes each rgb pixel and swaps them around according to a pattern called the "key". 
-For example, the key "grb" swaps the red and green pixel values for every pixel in the image.
-
 
 ---
 
