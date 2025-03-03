@@ -5,69 +5,59 @@
 use image::{ImageBuffer, Rgb};
 use regex::Regex;
 
+use std::env::args;
+
 use crate::filters;
 
 type RgbImageBuffer = ImageBuffer<Rgb<u8>, Vec<u8>>;
 
 
 
-pub fn start(mut image_buffer: RgbImageBuffer, filter_arg: Option<&String>, save_path_arg: Option<&String>) {
-
-        // For now these arguments are required
-    let filter_id      =     filter_arg.map(String::as_str).expect("no filter specified");
-    let save_path      =  save_path_arg.map(String::as_str).expect("no save path specified");
+pub fn start(mut args: std::env::Args) {
 
 
+    let mut batch_input  = false;
+    let mut batch_output = false;
 
-
-    let (filter_name, key_string) = get_filter_components(filter_id);
-
-            // Get specified filter from factory
-        let factory        = filters::FilterFactory::new();
-
-        let filter_builder = factory.get(filter_name);
-
-        let filter = filter_builder(key_string);
-
-            // Apply dynamically loaded filter to image buffer
-        filter.apply(&mut image_buffer);
-
-
-
-            // Save the modified image
-
-            println!("saving image. . .");
-
-        let _  = image_buffer.save(save_path);
-
-            println!("image saved.");
-
-
-
-}   
-
-
-
-fn get_filter_components(filter_id: &str) -> (&str, &str) {
-
-    let re = Regex::new(r"(?P<name>[a-z]+)-(?P<key>.*)")
-                    .unwrap();
-
-    if let Some(filter_parts) = re.captures(filter_id) {
-
-        let name = filter_parts.name("name").unwrap().as_str();
-
-        let key_string  = match filter_parts.name("key") {
-
-            Some(key) if !key.as_str().is_empty() => key.as_str(),
-            _ => "",
-
-        };
-    
-        (name, key_string)
-
-    } else {
-        panic!("Failed to parse filter identifier");
+    let mut input = args.next().expect("Failed to parse input");
+    if input.as_str() == "-b" {
+        batch_input = true;
+        input = args.next().expect("Failed to parse input");
     }
 
+    let mut key_identifier = args.next().expect("Failed to parse filter key");
+    if key_identifier.as_str() == "-s" {
+        batch_output = true;
+        key_identifier = args.next().expect("Failed to parse filter key");
+    }
+
+    if batch_input && batch_output { panic!("Cant do batch input and output yet sorry."); }
+
+    let mut output = args.next().expect("Failed to parse output");
+
+    if batch_input {
+        batch_input_run(input, key_identifier, output);
+        return;
+    }
+
+    if batch_output {
+        batch_output_run(input, key_identifier, output);
+        return
+    }
+
+    single_run(input, key_identifier, output);
+
+}
+
+
+fn batch_input_run(input_dir: String, filter_key: String, output_dir: String) {
+    println!("batch input run");
+}
+
+fn batch_output_run(input: String, keyset: String, output_dir: String) {
+    println!("batch output run");
+}
+
+fn single_run(input: String, filter_key: String, output: String) { 
+    println!("single run");
 }
