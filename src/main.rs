@@ -5,6 +5,7 @@
 mod add;
 mod view;
 mod filters;
+mod utils;
 
 use std::env;
 
