@@ -9,6 +9,8 @@ use std::env::args;
 
 use crate::filters;
 
+mod runs;
+
 type RgbImageBuffer = ImageBuffer<Rgb<u8>, Vec<u8>>;
 
 
@@ -45,7 +47,7 @@ pub fn start(mut args: std::env::Args) {
         return
     }
 
-    single_run(input, key_identifier, output);
+    runs::single_run(input, key_identifier, output);
 
 }
 
@@ -56,8 +58,4 @@ fn batch_input_run(input_dir: String, filter_key: String, output_dir: String) {
 
 fn batch_output_run(input: String, keyset: String, output_dir: String) {
     println!("batch output run");
-}
-
-fn single_run(input: String, filter_key: String, output: String) { 
-    println!("single run");
 }
