@@ -6,7 +6,10 @@ pub mod swap;
 pub mod invert;
 
 use image::{ImageBuffer, Rgb};
+use regex::Regex;
+
 use std::collections::HashMap;
+
 
 type RgbImageBuffer = ImageBuffer<Rgb<u8>, Vec<u8>>;
 
