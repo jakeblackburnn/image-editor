@@ -27,10 +27,10 @@ pub fn start(mut args: std::env::Args) {
         input = args.next().expect("Failed to parse input");
     }
 
-    let mut key_identifier = args.next().expect("Failed to parse filter key");
-    if key_identifier.as_str() == "-s" {
+    let mut filter_identifier = args.next().expect("Failed to parse filter key");
+    if filter_identifier.as_str() == "-s" {
         batch_output = true;
-        key_identifier = args.next().expect("Failed to parse filter key");
+        filter_identifier = args.next().expect("Failed to parse filter key");
     }
 
     if batch_input && batch_output { panic!("Cant do batch input and output yet sorry."); }
@@ -38,24 +38,21 @@ pub fn start(mut args: std::env::Args) {
     let mut output = args.next().expect("Failed to parse output");
 
     if batch_input {
-        batch_input_run(input, key_identifier, output);
+        batch_input_run(input, filter_identifier, output);
         return;
     }
 
     if batch_output {
-        batch_output_run(input, key_identifier, output);
+        runs::batch_output_run(input, filter_identifier, output);
         return
     }
 
-    runs::single_run(input, key_identifier, output);
+    runs::single_run(input, filter_identifier, output);
 
 }
 
 
-fn batch_input_run(input_dir: String, filter_key: String, output_dir: String) {
+fn batch_input_run(input_dir: String, filter: String, output_dir: String) {
     println!("batch input run");
 }
 
-fn batch_output_run(input: String, keyset: String, output_dir: String) {
-    println!("batch output run");
-}
