@@ -4,6 +4,7 @@
 
 pub mod swap;
 pub mod invert;
+pub mod keysets;
 
 use image::{ImageBuffer, Rgb};
 use regex::Regex;
