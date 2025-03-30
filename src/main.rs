@@ -19,12 +19,9 @@ fn main() {
 
     if let Some(mode) = args_iterator.next() {
 
-        let add_mode  = String::from("add");
-        let view_mode = String::from("view");
-
-        match mode {
-            add_mode  =>  add::start(args_iterator),
-          //view_mode => view::start(args_iterator),    ... gonna ignore view mode for now
+        match mode.as_str() {
+            "add"  =>  add::start(args_iterator),
+            "view" => view::start(args_iterator),    
 
             _      => panic!("Mode argument invalid"),
         }
@@ -33,3 +30,5 @@ fn main() {
         panic!("Mode argument not found");
     }
 }
+
+
