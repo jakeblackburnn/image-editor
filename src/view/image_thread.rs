@@ -36,7 +36,8 @@ pub fn start_image_thread( image_buffer: SharedImageBuffer, update_switch: Share
 
         while menu_option != MenuOption::Quit {
 
-            // TODO: Add input menu
+                // TODO: Add proper input menu
+            println!("enter option: ");
 
             let mut input = String::new();
             stdin().read_line(&mut input).expect("Failed to read user input");
@@ -53,10 +54,22 @@ pub fn start_image_thread( image_buffer: SharedImageBuffer, update_switch: Share
                 // TODO: implement menu option actions
             match menu_option {
 
-                MenuOption::Filter => {}
-                MenuOption::Save => {}
-                MenuOption::Quit => {}
-                MenuOption::Empty => {}
+                MenuOption::Filter => {
+                    println!("Filtering");
+                    continue;
+                }
+                MenuOption::Save => {
+                    println!("Saving");
+                    continue;
+                }
+                MenuOption::Quit => {
+                    println!("Quitting");
+                    continue;
+                }
+                MenuOption::Empty => {
+                    println!("Option provided is invalid - try again");
+                    continue;
+                }
 
             } // end match menu option
         } // end while not quit option
