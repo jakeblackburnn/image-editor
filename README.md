@@ -7,9 +7,9 @@ Last Updated Feb 23 2025 (**WIP**)
 Simple CLI based low level image editor.
 
 <div>
-<img src="https://github.com/jakeblackburnn/image-editor/blob/main/in/iris.jpg?raw=true" width="200">
-<img src="https://github.com/jakeblackburnn/image-editor/blob/main/out/out1.png?raw=true" width="200">
-<img src="https://github.com/jakeblackburnn/image-editor/blob/main/out/out2.png?raw=true" width="200">
+<img src="https://github.com/jakeblackburnn/image-editor/blob/main/in/iris.jpg?raw=true" width="220">
+<img src="https://github.com/jakeblackburnn/image-editor/blob/main/out/out1.png?raw=true" width="220">
+<img src="https://github.com/jakeblackburnn/image-editor/blob/main/out/out2.png?raw=true" width="220">
 </div>
 
 ***
@@ -50,6 +50,11 @@ cargo run -- add -b <input_directory> <filter> <output_directory>
 cargo run -- add <input> -s <filter_set> <output_directory>
 ```
 
+- view mode: 
+
+```bash
+cargo run -- view <input>
+```
 
 ---
 
@@ -63,7 +68,8 @@ three sub modes: single run, batch input run, batch output run.
 right now these lead to dummy functions and dont do anything. 
 
 - **View Mode** - 
-This mode is not implemented. 
+This mode is barely implemented. 
+All it does right now is show the provided image.
 In future will be added to allow user to make and view changes in real time before committing to saving the new image.
 
 ---
