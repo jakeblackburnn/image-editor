@@ -2,14 +2,14 @@
 
 By J. Blackburn
 
-Last Updated Feb 23 2025 (**WIP**)
+Last Updated Mar 30 2025 (**WIP**)
 
 Simple CLI based low level image editor.
 
 <div>
-<img src="https://github.com/jakeblackburnn/image-editor/blob/main/in/iris.jpg?raw=true" width="220">
-<img src="https://github.com/jakeblackburnn/image-editor/blob/main/out/out1.png?raw=true" width="220">
-<img src="https://github.com/jakeblackburnn/image-editor/blob/main/out/out2.png?raw=true" width="220">
+<img src="https://github.com/jakeblackburnn/image-editor/blob/main/in/iris.jpg?raw=true" width="205">
+<img src="https://github.com/jakeblackburnn/image-editor/blob/main/out/out1.png?raw=true" width="205">
+<img src="https://github.com/jakeblackburnn/image-editor/blob/main/out/out2.png?raw=true" width="205">
 </div>
 
 ***
@@ -65,7 +65,7 @@ cargo run -- view <input>
 - **Add mode** - 
 This mode adds a filter or filters to an image or images. 
 three sub modes: single run, batch input run, batch output run.
-right now these lead to dummy functions and dont do anything. 
+batch input is not implemented yet.
 
 - **View Mode** - 
 This mode is barely implemented. 
