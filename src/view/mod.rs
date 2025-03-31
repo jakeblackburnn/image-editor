@@ -5,6 +5,9 @@
 mod view_panel;
 use view_panel::ViewPanel;
 
+mod image_thread;
+use image_thread::start_image_thread;
+
 use crate::utils::load_rgb_image_buffer;
 
 
@@ -29,6 +32,11 @@ pub fn start(mut args: std::env::Args) {
         // create shareable clone of image, and update switch
     let mut shared_image_buffer = Arc::new( Mutex::new( image_buffer.clone() ));
     let mut update_switch = Arc::new( Mutex::new( true ));
+
+
+        // spin up image editing thread
+    start_image_thread( shared_image_buffer.clone(), update_switch.clone() );
+
 
     let mut app = ViewPanel::new( shared_image_buffer.clone(), update_switch.clone() );
 
