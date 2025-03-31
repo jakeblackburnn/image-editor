@@ -6,7 +6,7 @@ use crate::filters;
 
 use image::{ImageBuffer, Rgb};
 
-use std::sync{Arc, Mutex};
+use std::sync::{Arc, Mutex};
 use std::thread;
 use std::path::Path;
 use std::io::{stdin, stdout, Write};
@@ -17,7 +17,7 @@ type RgbImageBuffer    = ImageBuffer<Rgb<u8>, Vec<u8>>;
 type SharedImageBuffer = Arc<Mutex<RgbImageBuffer>>;
 type SharedBool        = Arc<Mutex<bool>>;
 
-
+#[derive(PartialEq)]
 enum MenuOption { // types of possible user inputs
     Empty, 
     Filter, 
@@ -48,7 +48,7 @@ pub fn start_image_thread( image_buffer: SharedImageBuffer, update_switch: Share
                 "s" => MenuOption::Save,
                 "q" => MenuOption::Quit,
                  _  => MenuOption::Empty,
-            }
+            };
 
                 // TODO: implement menu option actions
             match menu_option {
@@ -60,5 +60,5 @@ pub fn start_image_thread( image_buffer: SharedImageBuffer, update_switch: Share
 
             } // end match menu option
         } // end while not quit option
-    } // end spawn thread
+    }); // end spawn thread
 }
