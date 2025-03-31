@@ -49,27 +49,28 @@ impl eframe::App for ViewPanel {
 
     fn update(&mut self, ctx: &egui::Context, frame: &mut eframe::Frame ) {
 
-            // TODO: Add update functionality
+        let mut locked_update_switch = self.update_switch.lock().unwrap();
 
-        self.image_texture = Some( ViewPanel::load_image( ctx, self.image_buffer.clone() ));
+        if *locked_update_switch == true {
+            self.image_texture = Some( ViewPanel::load_image( ctx, self.image_buffer.clone() ));
 
 
 
-        egui::CentralPanel::default().show(ctx, |ui| {
 
-            let panel_size = ui.available_size();
+            egui::CentralPanel::default().show(ctx, |ui| {
+                let panel_size = ui.available_size();
+                if let Some(texture) = &self.image_texture { // if texture is loaded
+                    let image_size  = texture.size_vec2();
+                    let scale       = (panel_size.x / image_size.x).min(panel_size.y / image_size.y);
+                    let scaled_size = image_size * scale;
+                    ui.with_layout(egui::Layout::centered_and_justified(egui::Direction::TopDown), |ui| {
+                        ui.add(egui::Image::new(texture).fit_to_exact_size(scaled_size));
+                    });
+                }
+            }); // end show central panel
 
-            if let Some(texture) = &self.image_texture { // if texture is loaded
-                let image_size  = texture.size_vec2();
-                let scale       = (panel_size.x / image_size.x).min(panel_size.y / image_size.y);
-
-                let scaled_size = image_size * scale;
-
-                ui.with_layout(egui::Layout::centered_and_justified(egui::Direction::TopDown), |ui| {
-                    ui.add(egui::Image::new(texture).fit_to_exact_size(scaled_size));
-                });
-            }
-        });
+            *locked_update_switch == false; // re-toggle update switch
+        }
     }
 
 } // end impl eframe App for ViewPanel
