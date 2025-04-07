@@ -2,7 +2,7 @@
 
 By J. Blackburn
 
-Last Updated Mar 30 2025 (**WIP**)
+Last Updated Apr 7 2025 (**WIP**)
 
 Simple CLI based low level image editor.
 
@@ -72,11 +72,26 @@ This mode is barely implemented.
 All it does right now is show the provided image.
 In future will be added to allow user to make and view changes in real time before committing to saving the new image.
 
+2. Filters:
+
+pass a filter identifier to add / view to apply the filter.
+identifiers are of the form \<filter name>-\<key string>
+
+
+- **Invert** -
+this filter inverts all the pixel values in the image, does not require a key string. 
+
+- **Swap** -
+this filter swaps around the rgb values for each pixel based on the pattern provided in the key string. Example: swap-brg.
+
+- **Plus** -
+this filter adds the provided value to each pixel component. Example: plus-50
+
 ---
 
 ## Technologies Used
 
-- Rust, Regex
+- Rust, Regex, egui
 
 ---
 
