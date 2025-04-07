@@ -4,6 +4,7 @@
 
 pub mod swap;
 pub mod invert;
+pub mod plus;
 pub mod keysets;
 
 use image::{ImageBuffer, Rgb};
@@ -35,6 +36,7 @@ impl FilterFactory {
 
         filter_constructors.insert("invert".to_string(), invert::construct);
         filter_constructors.insert("swap".to_string(), swap::construct);
+        filter_constructors.insert("plus".to_string(), plus::construct);
      
         Self {
             filter_constructors,
@@ -50,7 +52,7 @@ impl FilterFactory {
 
 pub fn get_filter_components(filter_id: &str) -> (&str, &str) {
 
-    let re = Regex::new(r"(?P<name>[a-z]+)-(?P<key>.*)")
+    let re = Regex::new(r"(?P<name>[a-z]+)-?(?P<key>.*)")
                     .unwrap();
 
     if let Some(filter_parts) = re.captures(filter_id) {
