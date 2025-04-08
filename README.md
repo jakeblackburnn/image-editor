@@ -2,14 +2,14 @@
 
 By J. Blackburn
 
-Last Updated Apr 7 2025 (**WIP**)
+Last Updated Apr 8 2025 (**WIP**)
 
 Simple CLI based low level image editor.
 
 <div>
 <img src="https://github.com/jakeblackburnn/image-editor/blob/main/in/iris.jpg?raw=true" width="205">
-<img src="https://github.com/jakeblackburnn/image-editor/blob/main/out/out1.png?raw=true" width="205">
 <img src="https://github.com/jakeblackburnn/image-editor/blob/main/out/out2.png?raw=true" width="205">
+<img src="https://github.com/jakeblackburnn/image-editor/blob/main/out/out3-grb.png?raw=true" width="205">
 </div>
 
 ***
@@ -82,10 +82,16 @@ identifiers are of the form \<filter name>-\<key string>
 this filter inverts all the pixel values in the image, does not require a key string. 
 
 - **Swap** -
-this filter swaps around the rgb values for each pixel based on the pattern provided in the key string. Example: swap-brg.
+this filter swaps around the rgb values for each pixel based on the pattern provided in the key string. 
+Examples: swap-brg, swap-ggg.
 
 - **Plus** -
-this filter adds the provided value to each pixel component. Example: plus-50
+this filter adds the provided value to each pixel component, or to only one pixel component if provided. 
+Examples: plus-50, plus-r100
+
+- **Mult** -
+this filter multiplies each pixel component by the provided value. 
+Example: mult-50
 
 ---
 
