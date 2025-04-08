@@ -5,6 +5,7 @@
 pub mod swap;
 pub mod invert;
 pub mod plus;
+pub mod mult;
 pub mod keysets;
 
 use image::{ImageBuffer, Rgb};
@@ -37,6 +38,7 @@ impl FilterFactory {
         filter_constructors.insert("invert".to_string(), invert::construct);
         filter_constructors.insert("swap".to_string(), swap::construct);
         filter_constructors.insert("plus".to_string(), plus::construct);
+        filter_constructors.insert("mult".to_string(), mult::construct);
      
         Self {
             filter_constructors,
