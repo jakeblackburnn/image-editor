@@ -32,6 +32,8 @@ pub fn start_image_thread( image_buffer: SharedImageBuffer, update_switch: Share
         // TODO: Format txt output
 
         let mut menu_option = MenuOption::Empty; // default option is none / empty
+        
+        let factory = filters::FilterFactory::new();
 
 
         while menu_option != MenuOption::Quit {
@@ -55,11 +57,44 @@ pub fn start_image_thread( image_buffer: SharedImageBuffer, update_switch: Share
             match menu_option {
 
                 MenuOption::Filter => {
-                    println!("Filtering");
+                    print!("Filtering image - Enter filter identifier: ");
+                    let _ = stdout().flush();
+
+                    let mut filter_string = String::new();
+                    stdin().read_line(&mut filter_string)
+                           .expect("Error: could not read filter identifier");
+                    let _ = stdout().flush();
+
+                        // break filter string into name and key
+                    let (filter_name, key_string) = 
+                        filters::get_filter_components(&filter_string);
+
+
+                    let filter_builder = factory.get(filter_name);
+                    let filter = filter_builder(key_string);
+
+                    let mut locked_image_buffer = image_buffer.lock().unwrap();
+
+                    filter.apply(&mut locked_image_buffer);
+
+                    let mut locked_update_switch = update_switch.lock().unwrap();
+                    *locked_update_switch = true;
+
                     continue;
                 }
                 MenuOption::Save => {
-                    println!("Saving");
+                    print!("Saving image - Specify output path: ");
+                    let _ = stdout().flush();
+
+                    let mut output_path = String::new();
+                    stdin().read_line(&mut output_path)
+                           .expect("Error: could not read user input");
+
+                    let _ = stdout().flush();
+
+                    let locked_image_buffer = image_buffer.lock().unwrap();
+                    locked_image_buffer.save(Path::new(output_path.trim())); 
+
                     continue;
                 }
                 MenuOption::Quit => {
