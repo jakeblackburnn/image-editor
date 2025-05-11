@@ -8,6 +8,7 @@ pub mod plus;
 pub mod minus;
 pub mod mult;
 pub mod bw;
+pub mod grayscale;
 pub mod keysets;
 
 use image::{ImageBuffer, Rgb};
@@ -43,6 +44,7 @@ impl FilterFactory {
         filter_constructors.insert("minus".to_string(), minus::construct);
         filter_constructors.insert("mult".to_string(), mult::construct);
         filter_constructors.insert("bw".to_string(), bw::construct);
+        filter_constructors.insert("grayscale".to_string(), grayscale::construct);
      
         Self {
             filter_constructors,
