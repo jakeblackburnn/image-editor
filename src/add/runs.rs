@@ -12,7 +12,10 @@ pub fn single_run(input_image: String, filter_string: String, output_path: Strin
     let mut image_buffer = load_rgb_image_buffer(input_image);
 
         // break filter string into name and key
-    let (filter_name, key_string) = filters::get_filter_components(&filter_string);
+    let Some((filter_name, key_string)) = filters::get_filter_components(&filter_string) 
+    else {
+        panic!("failed to get filter components");
+    }; 
 
         // build filter via filter factory
     let factory = filters::FilterFactory::new();
@@ -42,7 +45,10 @@ pub fn batch_output_run(input_image: String, filter_set_string: String, output_d
         let mut image_buffer_clone = image_buffer.clone();
 
             // break filter string into name and key
-        let (filter_name, key_string) = filters::get_filter_components(&filter_string);
+        let Some((filter_name, key_string)) = filters::get_filter_components(&filter_string)
+        else {
+            panic!("failed to get filter components");
+        }; 
 
             // build filter via filter factory
         let filter_builder = factory.get(filter_name);
