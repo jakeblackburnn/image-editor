@@ -19,7 +19,10 @@ pub fn single_run(input_image: String, filter_string: String, output_path: Strin
 
         // build filter via filter factory
     let factory = filters::FilterFactory::new();
-    let filter_builder = factory.get(filter_name);
+
+    let Some( filter_builder ) = factory.get(filter_name)
+    else { panic!("failed to get filter builder"); };
+
     let filter = filter_builder(key_string);
 
     
@@ -51,7 +54,8 @@ pub fn batch_output_run(input_image: String, filter_set_string: String, output_d
         }; 
 
             // build filter via filter factory
-        let filter_builder = factory.get(filter_name);
+        let Some( filter_builder ) = factory.get(filter_name) 
+        else { panic!("failed to get filter builder"); };
         let filter = filter_builder(key_string);
 
 
