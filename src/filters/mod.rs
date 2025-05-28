@@ -53,14 +53,14 @@ impl FilterFactory {
         }
     }
 
-    pub fn get(&self, filter: &str) -> fn(key_string: &str) -> Box<dyn Filter> {
-        self.filter_constructors[filter]
+    pub fn get(&self, filter: &str) -> Option<fn(key_string: &str) -> Box<dyn Filter>> {
+        self.filter_constructors.get(filter).copied()
     }
 }
 
 
 
-pub fn get_filter_components(filter_id: &str) -> (&str, &str) {
+pub fn get_filter_components(filter_id: &str) -> Option<(&str, &str)> {
 
     let re = Regex::new(r"(?P<name>[a-z]+)-?(?P<key>.*)")
                     .unwrap();
@@ -76,10 +76,10 @@ pub fn get_filter_components(filter_id: &str) -> (&str, &str) {
 
         };
     
-        (name, key_string)
+        Some((name, key_string))
 
     } else {
-        panic!("Failed to parse filter identifier");
+        None
     }
 
 }
