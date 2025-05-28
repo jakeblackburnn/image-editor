@@ -21,7 +21,7 @@ pub fn construct(key_string: &str) -> Box<dyn Filter> {
     let re = Regex::new(r"(?P<color>[rgb])?(?P<n>[0-9]+\.[0-9]+)")
                     .unwrap();
 
-    let captures = re.captures(key_string).expect("Failed to parse plus key string");
+    let captures = re.captures(key_string).expect("Failed to parse mult key string");
 
     let n_str = captures.name("n").unwrap().as_str();
 
