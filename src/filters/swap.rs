@@ -59,10 +59,23 @@ impl Filter for Swap {
 
 fn swap_pixel(pixel: &Rgb<u8>, rkey: char, gkey: char, bkey: char) -> Rgb<u8> {
     let (r, g, b) = (pixel[0], pixel[1], pixel[2]);
-    let key_map = HashMap::from([
-        ('r' , r),
-        ('g' , g),
-        ('b' , b),
-    ]);
-    Rgb([ key_map[&rkey], key_map[&gkey], key_map[&bkey] ])
+    let newr = match rkey {
+        'r' => r,
+        'g' => g,
+        'b' => b,
+         _  => r,
+    };
+    let newg = match gkey {
+        'r' => r,
+        'g' => g,
+        'b' => b,
+         _  => g,
+    };
+    let newb = match bkey {
+        'r' => r,
+        'g' => g,
+        'b' => b,
+         _  => b,
+    };
+    Rgb([ newr, newg, newb ])
 }
