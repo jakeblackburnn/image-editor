@@ -71,8 +71,8 @@ fn mult_to_pixel(pixel: &Rgb<u8>, n: f32) -> Rgb<u8> {
     let (r, g, b) = (pixel[0], pixel[1], pixel[2]);
 
     let newr = mult_color_channel(r, n);
-    let newg = mult_color_channel(b, n);
-    let newb = mult_color_channel(g, n);
+    let newg = mult_color_channel(g, n);
+    let newb = mult_color_channel(b, n);
 
     Rgb([ newr, newg, newb ])
 }
