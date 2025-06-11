@@ -20,8 +20,12 @@ type SharedBool        = Arc<Mutex<bool>>;
 pub fn start_image_thread( image_buffer: SharedImageBuffer, update_switch: SharedBool ) {
     thread::spawn( move || {
 
-        // TODO: Format txt output
+        print_empty_lines(30);
+
         loop {
+
+            print_empty_lines(1);
+
             print!("enter option: ");
             let _ = stdout().flush(); 
 
@@ -48,6 +52,7 @@ pub fn start_image_thread( image_buffer: SharedImageBuffer, update_switch: Share
 }
 
 
+fn print_empty_lines(lines: u32) {for i in 0..lines { println!(""); }}
 
 fn read_input() -> String {
     let mut input = String::new();
@@ -58,8 +63,8 @@ fn read_input() -> String {
 }
 
 
-
 fn handle_filter_option(image_buffer: SharedImageBuffer, update_switch: SharedBool) {
+    print_empty_lines(1);
     print!("Filtering image - Enter filter identifier: ");
 
     loop {
@@ -78,8 +83,8 @@ fn handle_filter_option(image_buffer: SharedImageBuffer, update_switch: SharedBo
                 break;
             }
             Err(e) => { 
-                println!("Error: {}", e);
-                print!("try again: ");
+                print_empty_lines(1);
+                print!("Error: {} - try again: ", e);
                 continue;
             }
         };
@@ -89,6 +94,7 @@ fn handle_filter_option(image_buffer: SharedImageBuffer, update_switch: SharedBo
 
 
 fn handle_save_option(image_buffer: SharedImageBuffer) {
+    print_empty_lines(3);
     print!("Saving image - Specify output path: ");
     let _ = stdout().flush();
 
