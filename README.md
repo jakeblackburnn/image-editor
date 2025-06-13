@@ -7,12 +7,26 @@ Last Updated Apr 8 2025 (**WIP**)
 Simple CLI based low level image editor.
 
 <div>
-<img src="https://github.com/jakeblackburnn/image-editor/blob/main/in/iris.jpg?raw=true" width="205">
-<img src="https://github.com/jakeblackburnn/image-editor/blob/main/out/out2.png?raw=true" width="205">
-<img src="https://github.com/jakeblackburnn/image-editor/blob/main/out/out3-grb.png?raw=true" width="205">
+<img src="https://github.com/jakeblackburnn/image-editor/blob/main/out/iris/02.png?raw=true" width="205">
+<img src="https://github.com/jakeblackburnn/image-editor/blob/main/out/iris/13.png?raw=true" width="205">
+<img src="https://github.com/jakeblackburnn/image-editor/blob/main/out/iris/16.png?raw=true" width="205">
+</div>
+
+<div>
+<img src="https://github.com/jakeblackburnn/image-editor/blob/main/out/orchid/01.png?raw=true" width="205">
+<img src="https://github.com/jakeblackburnn/image-editor/blob/main/out/orchid/02.png?raw=true" width="205">
+<img src="https://github.com/jakeblackburnn/image-editor/blob/main/out/orchid/04.png?raw=true" width="205">
+</div>
+
+<div>
+<img src="https://github.com/jakeblackburnn/image-editor/blob/main/out/rose/03.png?raw=true" width="205">
+<img src="https://github.com/jakeblackburnn/image-editor/blob/main/out/rose/04.png?raw=true" width="205">
+<img src="https://github.com/jakeblackburnn/image-editor/blob/main/out/rose/05.png?raw=true" width="205">
 </div>
 
 ***
+
+
 
 ## Installation
 
