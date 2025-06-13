@@ -82,9 +82,8 @@ three sub modes: single run, batch input run, batch output run.
 batch input is not implemented yet.
 
 - **View Mode** - 
-This mode is barely implemented. 
-All it does right now is show the provided image.
-In future will be added to allow user to make and view changes in real time before committing to saving the new image.
+This mode allows a user to add view changes to an image before saving.
+Will be updated in future for better UX and with Reset option
 
 2. Filters:
 
@@ -96,16 +95,27 @@ identifiers are of the form \<filter name>-\<key string>
 this filter inverts all the pixel values in the image, does not require a key string. 
 
 - **Swap** -
-this filter swaps around the rgb values for each pixel based on the pattern provided in the key string. 
+this filter swaps around the rgb values for each pixel based on the pattern provided in the key string.
 Examples: swap-brg, swap-ggg.
 
 - **Plus** -
 this filter adds the provided value to each pixel component, or to only one pixel component if provided. 
 Examples: plus-50, plus-r100
 
+- **Minus** -
+this filter subtracts the provided value from each pixel component, or from only one pixel component if provided. 
+Examples: minus-50, minus-r100
+
 - **Mult** -
-this filter multiplies each pixel component by the provided value. 
-Example: mult-50
+this filter multiplies each pixel component by the provided value, or individual components as with plus / minus. multiplier must include a decimal point.
+Examples: mult-1.1, mult-r2.0
+
+- **Black/White** -
+this filter colors the image black and white, based on a provided "split" value. all pixels with average brightness above the split will become white, all below become black.
+Example: bw-124
+
+- **Colorize** -
+this filter replaces all pixels of a given color with a different color. specify current and substitute colors in the form R.G.B, separated by a comma. Examples: colorize-0.0.0,255.255.255 (turns all black pixels white), colorize-255.255.255,255.0.0 ( turns all white pixels red )
 
 ---
 
